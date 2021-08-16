@@ -37,12 +37,12 @@ const Login = (props) => {
   useEffect(() => {
     const identifier = setTimeout(() => {
       setFormIsValid(
-        passwordState.value.trim().length > 6 && emailState.value.includes('@')
+        emailState.isValid && passwordState.isValid
       );
     }, 400);
 
     return () => {clearTimeout(identifier);} // useEffect cleeanup function, which will run each time except first
-  }, [passwordState.value, emailState.value]);
+  }, [emailState.isValid, passwordState.isValid]);
 
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
